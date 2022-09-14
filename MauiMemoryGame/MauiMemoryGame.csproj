@@ -59,6 +59,9 @@
 	  <None Remove="ReactiveUI.Maui" />
 	  <None Remove="SkiaSharp.Views.Maui.Controls" />
 	  <None Remove="SkiaSharp.Extended.UI.Maui" />
+	  <None Remove="Services\DialogService\" />
+	  <None Remove="Services\LogService\" />
+	  <None Remove="Services\NavigationService\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Base\" />
@@ -70,6 +73,9 @@
 	  <Folder Include="Features\GameOver\" />
 	  <Folder Include="Models\" />
 	  <Folder Include="Services\" />
+	  <Folder Include="Services\DialogService\" />
+	  <Folder Include="Services\LogService\" />
+	  <Folder Include="Services\NavigationService\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="ReactiveUI.Fody" Version="18.3.1" />
@@ -79,6 +85,15 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="Features\ThemeSelector\ThemeSelectorView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Features\LevelSelector\LevelSelectorView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Features\GameOver\LevelSelectorView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Features\Game\LevelSelectorView.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
 	</ItemGroup>

@@ -2,8 +2,8 @@
 
 public class ThemeSelectorViewModel : BaseViewModel
 {
-	public ThemeSelectorViewModel()
-	{
+	public ThemeSelectorViewModel(INavigationService navigationService, ILogService logService) : base(navigationService, logService)
+    {
 	}
 
     public override Task OnAppearingAsync()

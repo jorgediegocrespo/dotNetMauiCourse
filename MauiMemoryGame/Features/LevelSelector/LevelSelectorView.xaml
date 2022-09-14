@@ -3,13 +3,13 @@
              xmlns:base="clr-namespace:MauiMemoryGame.Base"
              xmlns:features="clr-namespace:MauiMemoryGame.Features"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiMemoryGame.Features.ThemeSelectorView"
-             x:DataType="features:ThemeSelectorViewModel" 
-             x:TypeArguments="features:ThemeSelectorViewModel"
+             x:Class="MauiMemoryGame.Features.LevelSelectorView"
+             x:DataType="features:LevelSelectorViewModel" 
+             x:TypeArguments="features:LevelSelectorViewModel"
              Shell.NavBarIsVisible="False">
     <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
         <Label 
-            Text="Theme selector"
+            Text="Level selector"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
     </VerticalStackLayout>

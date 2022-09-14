@@ -6,3 +6,5 @@ global using ReactiveUI.Fody.Helpers;
 global using MauiMemoryGame.Base;
 global using ReactiveUI.Maui;
 global using MauiMemoryGame.Features;
+global using MauiMemoryGame.Models;
+global using MauiMemoryGame.Services;

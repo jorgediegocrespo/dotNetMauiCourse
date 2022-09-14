@@ -2,7 +2,10 @@
 
 public class BaseViewModel : ReactiveObject, IActivatableViewModel
 {
-	public BaseViewModel()
+    private readonly INavigationService navigationService;
+    private readonly ILogService logService;
+
+    public BaseViewModel(INavigationService navigationService, ILogService logService)
 	{
 		CreateCommands();
 
@@ -15,7 +18,9 @@ public class BaseViewModel : ReactiveObject, IActivatableViewModel
 			.Create(() => HandleDesactivation())
 			.DisposeWith(disposables);
 		});
-	}
+        this.navigationService = navigationService;
+        this.logService = logService;
+    }
 
     public ViewModelActivator Activator { get; }
 
@@ -29,13 +34,12 @@ public class BaseViewModel : ReactiveObject, IActivatableViewModel
 
     private Task NavigateBackAsync()
     {
-        //TODO
-        return Task.CompletedTask;
+        return navigationService.NavigateBack();
     }
 
     protected virtual void HandleActivation(CompositeDisposable disposables)
     {
-        //TODO NavigateBackCommand.ThrownExceptions.Subscribe(logService.TraceError).DisposeWith(disposables);
+        NavigateBackCommand.ThrownExceptions.Subscribe(logService.TraceError).DisposeWith(disposables);
         NavigateBackCommand.IsExecuting.ToPropertyEx(this, x => x.IsNavigatingBack).DisposeWith(disposables);
     }
 
