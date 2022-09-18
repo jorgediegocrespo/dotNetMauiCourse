@@ -8,3 +8,4 @@ global using ReactiveUI.Maui;
 global using MauiMemoryGame.Features;
 global using MauiMemoryGame.Models;
 global using MauiMemoryGame.Services;
+global using MauiMemoryGame.Controls;
