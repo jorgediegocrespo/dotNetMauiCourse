@@ -14,6 +14,7 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			}).
 			Services
+            .RegisterServices()
 			.RegisterViews();
 
         return builder.Build();
@@ -32,8 +33,8 @@ public static class MauiProgram
 	{
 		return services
 			.AddSingleton<IDialogService, DialogService>()
-			.AddSingleton<ILogService, ILogService>()
-			.AddSingleton<INavigationService, INavigationService>();
+			.AddSingleton<ILogService, LogService>()
+			.AddSingleton<INavigationService, NavigationService>();
     }
 }
 
