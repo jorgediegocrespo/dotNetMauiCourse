@@ -33,8 +33,8 @@ public static class MauiProgram
 	{
 		return services
 			.AddSingleton<IDialogService, DialogService>()
-			.AddSingleton<ILogService, ILogService>()
-			.AddSingleton<INavigationService, INavigationService>();
+			.AddSingleton<ILogService, LogService>()
+			.AddSingleton<INavigationService, NavigationService>();
     }
 }
 
