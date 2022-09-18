@@ -62,6 +62,7 @@
 	  <None Remove="Services\DialogService\" />
 	  <None Remove="Services\LogService\" />
 	  <None Remove="Services\NavigationService\" />
+	  <None Remove="Resources\Texts\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Base\" />
@@ -76,6 +77,7 @@
 	  <Folder Include="Services\DialogService\" />
 	  <Folder Include="Services\LogService\" />
 	  <Folder Include="Services\NavigationService\" />
+	  <Folder Include="Resources\Texts\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="ReactiveUI.Fody" Version="18.3.1" />
@@ -96,5 +98,23 @@
 	  <MauiXaml Update="Features\Game\LevelSelectorView.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
+	  <MauiXaml Update="Controls\CardButton.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	</ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Update="Resources\Texts\TextsResource.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>TextsResource.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\Texts\TextsResource.es.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>TextsResource.es.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	</ItemGroup>
+	<ItemGroup>
+	  <Compile Update="Resources\Texts\TextsResource.Designer.cs">
+	    <DependentUpon>TextsResource.resx</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 </Project>
