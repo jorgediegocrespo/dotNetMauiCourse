@@ -1,0 +1,120 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net6.0-windows10.0.19041.0</TargetFrameworks>
+		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
+		<!-- <TargetFrameworks>$(TargetFrameworks);net6.0-tizen</TargetFrameworks> -->
+		<OutputType>Exe</OutputType>
+		<RootNamespace>MauiMemoryGame</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+
+		<!-- Display name -->
+		<ApplicationTitle>MauiMemoryGame</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.companyname.mauimemorygame</ApplicationId>
+		<ApplicationIdGuid>CA6578B7-CFA2-4BAB-83FE-A3BFAA3234C4</ApplicationIdGuid>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+		<MauiFont Include="Resources\Fonts\*" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Base\" />
+	  <None Remove="Controls\" />
+	  <None Remove="Features\" />
+	  <None Remove="Features\ThemeSelector\" />
+	  <None Remove="Features\LevelSelector\" />
+	  <None Remove="Features\Game\" />
+	  <None Remove="Features\GameOver\" />
+	  <None Remove="Models\" />
+	  <None Remove="Services\" />
+	  <None Remove="ReactiveUI.Fody" />
+	  <None Remove="ReactiveUI.Maui" />
+	  <None Remove="SkiaSharp.Views.Maui.Controls" />
+	  <None Remove="SkiaSharp.Extended.UI.Maui" />
+	  <None Remove="Services\DialogService\" />
+	  <None Remove="Services\LogService\" />
+	  <None Remove="Services\NavigationService\" />
+	  <None Remove="Resources\Texts\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Base\" />
+	  <Folder Include="Controls\" />
+	  <Folder Include="Features\" />
+	  <Folder Include="Features\ThemeSelector\" />
+	  <Folder Include="Features\LevelSelector\" />
+	  <Folder Include="Features\Game\" />
+	  <Folder Include="Features\GameOver\" />
+	  <Folder Include="Models\" />
+	  <Folder Include="Services\" />
+	  <Folder Include="Services\DialogService\" />
+	  <Folder Include="Services\LogService\" />
+	  <Folder Include="Services\NavigationService\" />
+	  <Folder Include="Resources\Texts\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Include="ReactiveUI.Fody" Version="18.3.1" />
+	  <PackageReference Include="ReactiveUI.Maui" Version="18.3.1" />
+	  <PackageReference Include="SkiaSharp.Views.Maui.Controls" Version="2.88.1" />
+	  <PackageReference Include="SkiaSharp.Extended.UI.Maui" Version="2.0.0-preview.61" />
+	</ItemGroup>
+	<ItemGroup>
+	  <MauiXaml Update="Features\ThemeSelector\ThemeSelectorView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Features\LevelSelector\LevelSelectorView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Features\GameOver\LevelSelectorView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Features\Game\LevelSelectorView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Controls\CardButton.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	</ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Update="Resources\Texts\TextsResource.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>TextsResource.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\Texts\TextsResource.es.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>TextsResource.es.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	</ItemGroup>
+	<ItemGroup>
+	  <Compile Update="Resources\Texts\TextsResource.Designer.cs">
+	    <DependentUpon>TextsResource.resx</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+</Project>
