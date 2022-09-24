@@ -27,6 +27,12 @@
             <Color x:Key="SecondaryColorDark">#ad4c4c</Color>
             <Color x:Key="RertiaryColorDark">#4cad4c</Color>
             <Color x:Key="ChartColorDark">#4C4CAD</Color>
+
+            <Style x:Key="LbTitle" TargetType="Label">
+                <Setter Property="FontSize" Value="Title" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource TitleColorLight}, Dark={StaticResource TitleColorDark}}" />
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

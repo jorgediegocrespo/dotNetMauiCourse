@@ -2,8 +2,8 @@
 
 public class BaseViewModel : ReactiveObject, IActivatableViewModel
 {
-    private readonly INavigationService navigationService;
-    private readonly ILogService logService;
+    protected readonly INavigationService navigationService;
+    protected readonly ILogService logService;
 
     public BaseViewModel(INavigationService navigationService, ILogService logService)
 	{
@@ -27,7 +27,7 @@ public class BaseViewModel : ReactiveObject, IActivatableViewModel
     public ReactiveCommand<Unit, Unit> NavigateBackCommand { get; private set; }
     public extern bool IsNavigatingBack { [ObservableAsProperty] get; }
 
-    private void CreateCommands()
+    protected virtual void CreateCommands()
     {
         NavigateBackCommand = ReactiveCommand.CreateFromTask(NavigateBackAsync);
     }

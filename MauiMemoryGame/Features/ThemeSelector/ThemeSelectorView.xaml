@@ -21,7 +21,7 @@
             </LinearGradientBrush>
         </Grid.Background>
 
-        <Label x:Name="lbTitle" Grid.Row="1" Grid.ColumnSpan="4" 
+        <Label x:Name="lbTitle" Grid.Row="1" Grid.ColumnSpan="4" Style="{StaticResource LbTitle}"
                Text="{x:Static texts:TextsResource.ThemeSelectorTitle}" 
                Margin="20" 
                HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"  />
@@ -30,6 +30,21 @@
                              CornerRadius="20,20,20,0" ButtonOnLeft="False"
                              BackgroundSource="dc_logo.jpg"
                              Text="{x:Static texts:TextsResource.ThemeSelectorDc}" />
+
+        <controls:CardButton x:Name="btMarvel" Grid.Row="2" Grid.Column="2"
+                             CornerRadius="20,20,0,20" ButtonOnLeft="True"
+                             BackgroundSource="marvel_logo.jpg"
+                             Text="{x:Static texts:TextsResource.ThemeSelectorMarvel}" />
+
+        <controls:CardButton x:Name="btSimpsons" Grid.Row="3" Grid.Column="1"
+                             CornerRadius="20,0,20,20" ButtonOnLeft="False"
+                             BackgroundSource="simpsons_logo.jpg"
+                             Text="{x:Static texts:TextsResource.ThemeSelectorSimpsons}" />
+
+        <controls:CardButton x:Name="btStarWars" Grid.Row="3" Grid.Column="2"
+                             CornerRadius="0,20,20,20" ButtonOnLeft="True"
+                             BackgroundSource="star_wars_logo.jpg"
+                             Text="{x:Static texts:TextsResource.ThemeSelectorStarWars}" />
 
     </Grid>
 
