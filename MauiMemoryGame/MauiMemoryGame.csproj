@@ -110,6 +110,9 @@
 	  <MauiXaml Update="Controls\RoundedButton.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
+	  <MauiXaml Update="Controls\CardView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
 	</ItemGroup>
 	<ItemGroup>
 	  <EmbeddedResource Update="Resources\Texts\TextsResource.resx">

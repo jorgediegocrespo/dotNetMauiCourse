@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<base:BaseContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:base="clr-namespace:MauiMemoryGame.Base"
+             x:Class="MauiMemoryGame.Controls.CardView">
+
+    <Grid>
+        <Frame x:Name="frContent"
+               CornerRadius="20" HasShadow="True"
+               IsVisible="False" Padding="0"
+               IsClippedToBounds="True"
+               HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer x:Name="tapContent" />
+            </Frame.GestureRecognizers>
+
+            <Image x:Name="imgContent"
+                   Aspect="AspectFill"
+                   Margin="0"
+                   VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+
+        </Frame>
+
+
+
+        <Frame x:Name="frBack"
+               CornerRadius="20" HasShadow="True"
+               BackgroundColor="{AppThemeBinding Light={StaticResource CardBackgroundColorLight}, Dark={StaticResource CardBackgroundColorDark}}"
+               BorderColor="{AppThemeBinding Light={StaticResource CardBorderColorLight}, Dark={StaticResource CardBorderColorDark}}"
+               IsVisible="True" 
+               HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer x:Name="tapBack" />
+            </Frame.GestureRecognizers>
+        </Frame>
+
+    </Grid>
+</base:BaseContentView>
+
