@@ -2,17 +2,41 @@
 <base:BaseContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:base="clr-namespace:MauiMemoryGame.Base"
              xmlns:features="clr-namespace:MauiMemoryGame.Features"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:MauiMemoryGame.Controls"
+             xmlns:texts="clr-namespace:MauiMemoryGame.Resources.Texts"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:MauiMemoryGame.Controls"
              x:Class="MauiMemoryGame.Features.LevelSelectorView"
              x:DataType="features:LevelSelectorViewModel" 
              x:TypeArguments="features:LevelSelectorViewModel"
              Shell.NavBarIsVisible="False">
-    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
-        <controls:RoundedButton ButtonType="Back" IsBusy="False" />
-        <controls:RoundedButton ButtonType="Close" IsBusy="False" />
-        <controls:RoundedButton ButtonType="Back" IsBusy="True" />
 
-        <controls:CustomButton Text="Test" IsBusy="True" />
-        <controls:CustomButton Text="Test" IsBusy="False" />
-    </VerticalStackLayout>
+    <Grid RowDefinitions="50,*,50,50,50,*,50" ColumnDefinitions="*,150,*" 
+          RowSpacing="0" ColumnSpacing="10" 
+          Margin="0,0,0,-50" Padding="10,0">
+
+          <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="{AppThemeBinding Light={StaticResource BackgroundOneLight}, Dark={StaticResource BackgroundOneDark}}" Offset="0.1" />
+                <GradientStop Color="{AppThemeBinding Light={StaticResource BackgroundTwoLight}, Dark={StaticResource BackgroundTwoDark}}" Offset="1.0" />
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <controls:RoundedButton x:Name="btBack" ButtonType="Back" Margin="-10,0"
+                                HorizontalOptions="Start" VerticalOptions="Start" />
+
+        <Label x:Name="lbTitle" Grid.Row="1" Grid.ColumnSpan="3" Style="{StaticResource LbTitle}"
+               Text="{x:Static texts:TextsResource.LevelSelectorTitle}" 
+               Margin="20" 
+               HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
+
+        <controls:CustomButton x:Name="btLow" Grid.Row="2" Grid.Column="1"
+                             Text="{x:Static texts:TextsResource.LowLevel}"/>
+
+        <controls:CustomButton x:Name="btMedium" Grid.Row="3" Grid.Column="1"
+                             Text="{x:Static texts:TextsResource.MediumLevel}"/>
+
+        <controls:CustomButton x:Name="btHigh" Grid.Row="4" Grid.Column="1"
+                             Text="{x:Static texts:TextsResource.HighLevel}"/>
+
+    </Grid>
 </base:BaseContentPage>
