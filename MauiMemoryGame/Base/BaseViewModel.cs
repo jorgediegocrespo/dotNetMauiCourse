@@ -32,7 +32,7 @@ public class BaseViewModel : ReactiveObject, IActivatableViewModel
         NavigateBackCommand = ReactiveCommand.CreateFromTask(NavigateBackAsync);
     }
 
-    private Task NavigateBackAsync()
+    protected virtual Task NavigateBackAsync()
     {
         return navigationService.NavigateBack();
     }
