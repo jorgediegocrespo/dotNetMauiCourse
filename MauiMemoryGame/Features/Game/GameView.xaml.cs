@@ -6,8 +6,8 @@ public partial class GameView
 	{
 		ViewModel = viewModel;
 		InitializeComponent();
-        
-		cvTest.Card = new Card() { Found = false, ImagePath = "dc_1.jpg" };
+
+        cvTest.Card = new Card() { Found = false, ImagePath = "dc_1.jpg" };
 #if ANDROID
         cvTest.Clicked += CvTest_Clicked;
 #else
@@ -32,6 +32,6 @@ public partial class GameView
     {
         await cvTest.ShowContent();
         await Task.Delay(2000);
-        await cvTest.HideContent();        
+        await cvTest.HideContent();
     }
 }

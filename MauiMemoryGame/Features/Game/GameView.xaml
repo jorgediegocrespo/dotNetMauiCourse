@@ -8,11 +8,15 @@
              x:DataType="features:GameViewModel" 
              x:TypeArguments="features:GameViewModel"
              Shell.NavBarIsVisible="False">
-    <Grid RowDefinitions="*,150,*" ColumnDefinitions="*,100,*">
+    <Grid RowDefinitions="*,150,100,*" ColumnDefinitions="*,100,*">
         <controls:CardView x:Name="cvTest" Grid.Row="1" Grid.Column="1">
             <controls:CardView.GestureRecognizers>
                 <TapGestureRecognizer x:Name="cvTestTap" />
             </controls:CardView.GestureRecognizers>
         </controls:CardView>
+
+        <controls:CircleProgressBar Grid.Row="2" Grid.Column="1"
+                                    ProgressPercentage="80" ProgressBarColor="Purple" LineBackgroundColor="Grey"
+                                    HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
     </Grid>
 </base:BaseContentPage>

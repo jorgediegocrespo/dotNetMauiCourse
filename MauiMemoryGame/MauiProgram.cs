@@ -1,12 +1,15 @@
-﻿namespace MauiMemoryGame;
+﻿using SkiaSharp.Views.Maui.Controls.Hosting;
+
+namespace MauiMemoryGame;
 
 public static class MauiProgram
 {
 	public static MauiApp CreateMauiApp()
 	{
 		var builder = MauiApp.CreateBuilder();
-		builder
-			.UseMauiApp<App>()
+        builder
+            .UseSkiaSharp()
+            .UseMauiApp<App>()
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("MaterialIcons-Regular.ttf", "MaterialIcons");

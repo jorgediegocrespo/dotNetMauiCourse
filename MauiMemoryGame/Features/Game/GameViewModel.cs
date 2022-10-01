@@ -6,8 +6,8 @@ public class GameViewModel : BaseViewModel, IQueryAttributable
 	{
 	}
 
-    public static Themes SelectedTheme { get; private set; }
-    public static Level SelectedLevel { get; private set; }
+    public Themes SelectedTheme { get; private set; }
+    public Level SelectedLevel { get; private set; }
 
     public void ApplyQueryAttributes(IDictionary<string, object> query)
     {
