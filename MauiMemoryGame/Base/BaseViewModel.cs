@@ -15,7 +15,7 @@ public class BaseViewModel : ReactiveObject, IActivatableViewModel
 			HandleActivation(disposables);
 
 			Disposable
-			.Create(() => HandleDesactivation())
+			.Create(() => HandleDeactivation())
 			.DisposeWith(disposables);
 		});
         this.navigationService = navigationService;
@@ -32,7 +32,7 @@ public class BaseViewModel : ReactiveObject, IActivatableViewModel
         NavigateBackCommand = ReactiveCommand.CreateFromTask(NavigateBackAsync);
     }
 
-    private Task NavigateBackAsync()
+    protected virtual Task NavigateBackAsync()
     {
         return navigationService.NavigateBack();
     }
@@ -43,7 +43,7 @@ public class BaseViewModel : ReactiveObject, IActivatableViewModel
         NavigateBackCommand.IsExecuting.ToPropertyEx(this, x => x.IsNavigatingBack).DisposeWith(disposables);
     }
 
-    protected virtual void HandleDesactivation()
+    protected virtual void HandleDeactivation()
     {
         
     }
