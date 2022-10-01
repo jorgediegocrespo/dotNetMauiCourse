@@ -3,20 +3,84 @@
              xmlns:base="clr-namespace:MauiMemoryGame.Base"
              xmlns:features="clr-namespace:MauiMemoryGame.Features"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:texts="clr-namespace:MauiMemoryGame.Resources.Texts"
              xmlns:controls="clr-namespace:MauiMemoryGame.Controls"
              x:Class="MauiMemoryGame.Features.GameView"
              x:DataType="features:GameViewModel" 
              x:TypeArguments="features:GameViewModel"
              Shell.NavBarIsVisible="False">
-    <Grid RowDefinitions="*,150,100,*" ColumnDefinitions="*,100,*">
-        <controls:CardView x:Name="cvTest" Grid.Row="1" Grid.Column="1">
-            <controls:CardView.GestureRecognizers>
-                <TapGestureRecognizer x:Name="cvTestTap" />
-            </controls:CardView.GestureRecognizers>
-        </controls:CardView>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="MaxLines" Value="1" />
+                <Setter Property="LineBreakMode" Value="TailTruncation" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+            </Style>
 
-        <controls:CircleProgressBar Grid.Row="2" Grid.Column="1"
-                                    ProgressPercentage="80" ProgressBarColor="Purple" LineBackgroundColor="Grey"
-                                    HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+            <Style x:Key="topCard" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource CardBorderColorLight}, Dark={StaticResource CardBorderColorDark}}" />
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource BackgroundOneLight}, Dark={StaticResource BackgroundOneDark}}" />
+                <Setter Property="IsVisible" Value="False" />
+                <Setter Property="Padding" Value="0,10" />
+                <Setter Property="Opacity" Value="0" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <Grid RowDefinitions="50,75,*" ColumnDefinitions="*,*,*"
+          RowSpacing="0" ColumnSpacing="10"
+          Margin="0,0,0,-50" Padding="10,0">
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="{AppThemeBinding Light={StaticResource BackgroundOneLight}, Dark={StaticResource BackgroundOneDark}}" Offset="0.1" />
+                <GradientStop Color="{AppThemeBinding Light={StaticResource BackgroundTwoLight}, Dark={StaticResource BackgroundTwoDark}}" Offset="1.0" />
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <controls:RoundedButton x:Name="btBack" ButtonType="Back" Margin="-10,0"
+                                HorizontalOptions="Start" VerticalOptions="Start" 
+                                Opacity="0"/>
+
+        <Frame x:Name="frPairs" Grid.Row="1" Grid.Column="0" Style="{StaticResource topCard}">
+            <Grid RowDefinitions="*, 20">
+                <Label x:Name="lbPairs"
+                       TextColor="{AppThemeBinding Light={StaticResource SecondaryColorLight}, Dark={StaticResource SecondaryColorDark}}"
+                       FontSize="Large" />
+                <Label Text="{x:Static texts:TextsResource.GamePairs}" Grid.Row="1" FontSize="Small"/>
+            </Grid>
+        </Frame>
+
+        <Frame x:Name="frAttemps" Grid.Row="1" Grid.Column="1" Style="{StaticResource topCard}">
+            <Grid RowDefinitions="*,20">
+                <Label x:Name="lbAttemps" 
+                       TextColor="{AppThemeBinding Light={StaticResource RertiaryColorLight}, Dark={StaticResource RertiaryColorDark}}"
+                       FontSize="Large"/>
+                <Label Text="{x:Static texts:TextsResource.GameAttemps}" Grid.Row="1" FontSize="Small"/>
+            </Grid>
+        </Frame>
+
+        <Frame x:Name="frTimer" Grid.Row="1" Grid.Column="2" Padding="5" Style="{StaticResource topCard}">
+            <Grid>
+                <Label x:Name="lbTimer" FontSize="Micro"/>
+                <controls:CircleProgressBar x:Name="timeProgress"
+                                            ProgressBarColor="{AppThemeBinding Light={StaticResource ChartColorLight}, Dark={StaticResource ChartColorDark}}"
+                                            HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+            </Grid>
+        </Frame>
+
+        <Grid x:Name="gridBoard" Grid.Row="2" Grid.ColumnSpan="3" BackgroundColor="Transparent"
+              RowSpacing="5" ColumnSpacing="5" Margin="0,10" 
+              Opacity="0"/>
+
+        <ActivityIndicator x:Name="aiCreatingBoard" Grid.RowSpan="3" Grid.ColumnSpan="3"
+                           IsVisible="true" IsRunning="true"
+                           HorizontalOptions="Center" VerticalOptions="Center"
+                           InputTransparent="True"/>
+        
     </Grid>
 </base:BaseContentPage>
