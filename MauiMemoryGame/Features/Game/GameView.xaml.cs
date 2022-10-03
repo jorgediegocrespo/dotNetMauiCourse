@@ -224,4 +224,34 @@ public partial class GameView
             await tcs.Task;
         }
     }
+
+    public override async Task RunDisappearingAnimationAsync()
+    {
+        await base.RunDisappearingAnimationAsync();
+
+        using (var animation = new Animation())
+        {
+            double step = 0.5 / 4;
+
+            animation.Add(0, 0.5, new Animation(x => btBack.Opacity = x, 1, 0));
+            animation.Add(step * 1, 0.5 + step * 1, new Animation(x => frPairs.Opacity = x, 1, 0));
+            animation.Add(step * 2, 0.5 + step * 2, new Animation(x => frAttemps.Opacity = x, 1, 0));
+            animation.Add(step * 3, 0.5 + step * 3, new Animation(x => frTimer.Opacity = x, 1, 0));
+            animation.Add(step * 4, 0.5 + step * 4, new Animation(x => gridBoard.Opacity = x, 1, 0));
+
+            TaskCompletionSource<bool> tcs = new TaskCompletionSource<bool>();
+            animation.Commit(this, "disappearingAnimation", length: 1000, finished: (x, y) =>
+            {
+                btBack.Opacity = 0;
+                frPairs.Opacity = 0;
+                frAttemps.Opacity = 0;
+                frTimer.Opacity = 0;
+                gridBoard.Opacity = 0;
+
+                tcs.SetResult(true);
+            });
+
+            await tcs.Task;
+        }
+    }
 }
