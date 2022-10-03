@@ -66,6 +66,8 @@
 	  <None Remove="Services\LogService\" />
 	  <None Remove="Services\NavigationService\" />
 	  <None Remove="Resources\Texts\" />
+	  <None Remove="Resources\Raw\lose.json" />
+	  <None Remove="Resources\Raw\win.json" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Base\" />

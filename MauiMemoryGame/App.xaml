@@ -33,6 +33,12 @@
                 <Setter Property="HorizontalTextAlignment" Value="Center" />
                 <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource TitleColorLight}, Dark={StaticResource TitleColorDark}}" />
             </Style>
+
+            <Style x:Key="LbSubTitle" TargetType="Label">
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource TitleColorLight}, Dark={StaticResource TitleColorDark}}" />
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -53,8 +53,8 @@ public class NavigationService : INavigationService
             { nameof(GameViewModel.SelectedLevel), selectedLevel }
         };
 
-        await Shell.Current.GoToAsync($"../{nameof(GameView)}", navigationParameter);
         RemovePreviousPage();
+        await Shell.Current.GoToAsync($"../{nameof(GameView)}", navigationParameter);        
     }
 
     private void RemovePreviousPage()

@@ -3,16 +3,49 @@
              xmlns:base="clr-namespace:MauiMemoryGame.Base"
              xmlns:features="clr-namespace:MauiMemoryGame.Features"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:MauiMemoryGame.Controls"
+             xmlns:skiaextended="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+             xmlns:texts="clr-namespace:MauiMemoryGame.Resources.Texts"
              x:Class="MauiMemoryGame.Features.GameOverPopupView"
              x:DataType="features:GameOverPopupViewModel" 
              x:TypeArguments="features:GameOverPopupViewModel"
              Shell.NavBarIsVisible="False">
 
-    <Frame Margin="20,0" HeightRequest="420" Padding="0"
-           HorizontalOptions="Fill" VerticalOptions="Center">
-        <Label 
-            Text="Game over"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </Frame>
+    <Grid>
+        <Frame HeightRequest="420"
+               Padding="0" Margin="20,0"
+               HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+            <Grid x:Name="gridContent" RowDefinitions="50,170,130,50" 
+                  RowSpacing="0"
+                  Padding="10" Margin="0">
+                <Grid.Background>
+                    <LinearGradientBrush StartPoint="1,1" EndPoint="0,0">
+                        <GradientStop Color="{AppThemeBinding Light={StaticResource BackgroundOneLight}, Dark={StaticResource BackgroundOneDark}}" Offset="0.1" />
+                        <GradientStop Color="{AppThemeBinding Light={StaticResource BackgroundTwoLight}, Dark={StaticResource BackgroundTwoDark}}" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Grid.Background>
+
+                <controls:RoundedButton x:Name="btClose" ButtonType="Close"
+                                        Margin="0,-10,0,0"
+                                        HorizontalOptions="End" VerticalOptions="Start"/>
+
+                <skiaextended:SKLottieView x:Name="skiaLottie" Grid.Row="1"
+                                           Margin="10,0"
+                                           RepeatMode="Restart" RepeatCount="100"
+                                           Background="Transparent"
+                                           HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+
+                <VerticalStackLayout Grid.Row="2" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                    <Label x:Name="lbTitle" Style="{StaticResource LbTitle}"
+                           Margin="10,0"/>
+                    <Label x:Name="lbSubtitle" Style="{StaticResource LbSubTitle}" 
+                           Margin="10,0"/>
+                </VerticalStackLayout>
+
+                <controls:CustomButton x:Name="btPlayAgain" Grid.Row="3"
+                                       Text="{x:Static texts:TextsResource.PlayAgain}"
+                                       Margin="30,0" />
+            </Grid>
+        </Frame>
+    </Grid>
 </base:BasePopup>
