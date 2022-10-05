@@ -33,7 +33,7 @@ public class NavigationService : INavigationService
             { nameof(GameOverPopupViewModel.IsWinner), isWinner }
         };
 
-        return GoToAnimated(nameof(GameOverPopupView), navigationParameter);
+        return GoToAnimated(nameof(GameOverPopupView), navigationParameter, false);
     }
 
     public Task NavigateToLevelSelection(Themes selectedTheme)
@@ -54,8 +54,8 @@ public class NavigationService : INavigationService
             { nameof(GameViewModel.SelectedLevel), selectedLevel }
         };
 
+        await GoToAnimated($"../{nameof(GameView)}", navigationParameter);
         RemovePreviousPage();
-        await GoToAnimated($"../{nameof(GameView)}", navigationParameter);        
     }
 
     private void RemovePreviousPage()
@@ -64,15 +64,19 @@ public class NavigationService : INavigationService
         Shell.Current.Navigation.RemovePage(pageToRemove);
     }
 
-    private async Task GoToAnimated(ShellNavigationState state, IDictionary<string, object> parameters)
+    private async Task GoToAnimated(ShellNavigationState state, IDictionary<string, object> parameters, bool hidePrevious = true)
     {
-        await ((IAnimatedPage)Shell.Current.CurrentPage).RunDisappearingAnimationAsync();
+        if (hidePrevious)
+            await ((IAnimatedPage)Shell.Current.CurrentPage).RunDisappearingAnimationAsync();
+
         await Shell.Current.GoToAsync(state, false, parameters);
     }
 
-    private async Task GoToAnimated(ShellNavigationState state)
+    private async Task GoToAnimated(ShellNavigationState state, bool hidePrevious = true)
     {
-        await ((IAnimatedPage)Shell.Current.CurrentPage).RunDisappearingAnimationAsync();
+        if (hidePrevious)
+            await ((IAnimatedPage)Shell.Current.CurrentPage).RunDisappearingAnimationAsync();
+
         await Shell.Current.GoToAsync(state, false);
     }
 }

@@ -23,6 +23,8 @@
 
             this.Content = gridContent;
             this.BackgroundColor = Color.FromArgb("80000000");
+
+            Shell.SetPresentationMode(this, PresentationMode.ModalAnimated);
         }
 
         public View PopupContent

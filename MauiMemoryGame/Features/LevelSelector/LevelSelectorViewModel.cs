@@ -7,7 +7,7 @@ public class LevelSelectorViewModel : BaseViewModel
     {
 	}
 
-    public Themes SelectedTheme { get; private set; }
+    public Themes SelectedTheme { get; set; }
 
     public ReactiveCommand<Unit, Unit> SelectHighCommand { get; private set; }
     public extern bool IsSelectingHigh { [ObservableAsProperty] get; }

@@ -32,7 +32,7 @@
     </ContentPage.Resources>
 
 
-    <Grid RowDefinitions="50,75,*" ColumnDefinitions="*,*,*"
+    <Grid RowDefinitions="50,75,*,50" ColumnDefinitions="*,*,*"
           RowSpacing="0" ColumnSpacing="10"
           Margin="0,0,0,-50" Padding="10,0">
         <Grid.Background>
